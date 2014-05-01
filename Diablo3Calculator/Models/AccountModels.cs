@@ -64,4 +64,80 @@ namespace Diablo3Calculator.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
+
+     
+
+    public class HeroModel
+    {
+
+
+
+        public class Passive
+        {
+            public String Slug { get; set; }
+            public String Name { get; set; }
+            public String Icon { get; set; }
+            public String Tooltip { get; set; }
+            public String Description { get; set; }
+            public String FlavorText { get; set; }
+            public Boolean Active { get; set; }
+        }
+
+        public class Skill
+        {
+            public String Slug { get; set; }
+            public String Name { get; set; }
+            public String Icon { get; set; }
+            public String Tooltip { get; set; }
+            public String Description { get; set; }
+            public String SimpleDescription { get; set; }
+            public Boolean Active { get; set; }
+            public List<Rune> Runes { get; set; }
+
+
+        }
+
+        public class Rune
+        {
+            public String Slug { get; set; }
+            public String Name { get; set; }
+            public String Icon { get; set; }
+            public String Tooltip { get; set; }
+            public String Description { get; set; }
+            public String SimpleDescription { get; set; }
+            public Boolean Active { get; set; }
+        }
+
+
+        public enum HeroClass
+        {
+            Barbarian = 0,
+            Crusader = 1,
+            DemonHunter = 2,
+            Monk = 3,
+            WitchDoctor = 4,
+            Wizard = 5
+
+        }
+        public enum HeroGender {
+            Female = 0,
+            Male = 1
+        }
+        
+        public int ID { get; set; }
+        public String Name { get; set; }
+        public HeroClass Class {get; set;}
+        public HeroGender Gender {get; set;}
+        public int Level {get; set;}
+        public Boolean Hardcore {get; set;}
+        public List<Skill> Skills {get; set;}
+        public List<Passive> Passives {get; set;}
+    }
+
+    public class BattleNetAccountModel
+    {
+        [Required]
+        public string BattleTag { get; set; }
+        public List<HeroModel> Heroes { get; set; }
+   }
 }
